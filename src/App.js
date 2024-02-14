@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import './App.css';
 import '@fontsource/inter';
@@ -6,7 +6,18 @@ import Button from '@mui/joy/Button';
 
 function App() {
   const [theySaidYes, setTheySaidYes] = useState(false);
+  const [name, setName] = useState('John');
+
   const [maybe, setMaybe] = useState(0);
+
+  useEffect(() => {
+    let params = new URL(document.location).searchParams;
+    let name = params.get("name"); // is the string "Jonathan Smith".
+
+    if (name && name !== '') {
+      setName(name);
+    }
+  }, []);
 
   if (theySaidYes) {
     return (<div className="flex flex-col items-center content-center padding p-8">
@@ -30,7 +41,7 @@ function App() {
     return (
       <div className="flex flex-col items-center content-center padding p-8">
         <h1 className="text-4xl font-bold mb-8">
-          Dear John,
+          Dear {name},
         </h1>
         <div className="max-w-lg mb-8">
           <img src={require('./static/sad-cute.gif')} alt="loading..." />
@@ -54,7 +65,7 @@ function App() {
     return (
       <div className="flex flex-col items-center content-center padding p-8">
         <h1 className="text-4xl font-bold mb-8">
-          Dear John,
+          Dear {name},
         </h1>
         <div className="max-w-lg mb-8">
           <img src={require('./static/pliss-cute.gif')} alt="loading..." />
@@ -78,7 +89,7 @@ function App() {
     return (
       <div className="flex flex-col items-center content-center padding p-8">
         <h1 className="text-4xl font-bold mb-8">
-          Dear John,
+          Dear {name},
         </h1>
         <div className="max-w-lg mb-8">
           <img src={require('./static/angry-cute.gif')} alt="loading..." />
@@ -105,7 +116,7 @@ function App() {
     return (
       <div className="flex flex-col items-center content-center padding p-8">
         <h1 className="text-4xl font-bold mb-8">
-          Dear John,
+          Dear {name},
         </h1>
         <div className="max-w-lg">
           <img src={require('./static/peach-cat-will-you-be-my-valentine-pwv0x5b3amw0t6u9.gif')} alt="loading..." />
