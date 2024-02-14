@@ -40,9 +40,13 @@ function App() {
         </h1>
         <div className="flex">
           <div className="mr-4">
-            <Button size="lg" color="success" onClick={() => setTheySaidYes(true)}>YES</Button>
+            <Button sx={{ width: '8rem', height: '4rem' }} color="success" onClick={() => setTheySaidYes(true)}>
+              <p className="text-4xl">YES</p>
+            </Button>
           </div>
-          <Button size="lg" onClick={() => setMaybe(maybe + 1)}>Ehhhhh</Button>
+          <div>
+            <Button size="lg" onClick={() => setMaybe(maybe + 1)}>Ehhhhh</Button>
+          </div>
         </div>
       </div>
     );
@@ -60,9 +64,13 @@ function App() {
         </h1>
         <div className="flex">
           <div className="mr-4">
-            <Button size="lg" color="success" onClick={() => setTheySaidYes(true)}>YES</Button>
+            <Button sx={{ width: '10rem', height: '6rem' }} color="success" onClick={() => setTheySaidYes(true)}>
+              <p className="text-5xl">YES</p>
+            </Button>
           </div>
-          <Button size="lg" onClick={() => setMaybe(maybe + 1)}>Still no...</Button>
+          <div>
+            <Button size="lg" onClick={() => setMaybe(maybe + 1)}>Still no...</Button>
+          </div>
         </div>
       </div>
     );
@@ -78,10 +86,18 @@ function App() {
         <h1 className="text-4xl font-bold mb-8">
           You're giving me no choice... Will you be my Valentines?????
         </h1>
-        <div className="flex">
-          <div className="mr-4">
-            <Button size="lg" color="success" onClick={() => setTheySaidYes(true)}>Ughhh FINE</Button>
+        <div className="flex flex-col items-center">
+          <div className="mb-4">
+            <Button sx={{ width: `${9 + (maybe)}rem`, height: `${3 + (maybe)}rem` }} color="success" onClick={() => setTheySaidYes(true)}>
+              <p className="text-6xl">YES</p>
+            </Button>
           </div>
+          {maybe <= 10 ? (
+            <div>
+              <Button size="lg" onClick={() => setMaybe(maybe + 1)}>NOPE</Button>
+            </div>
+          ) : null
+          }
         </div>
       </div>
     );
